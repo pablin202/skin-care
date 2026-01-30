@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { getWhatsAppUrl } from '@/lib/utils';
+import { CONTACT } from '@/config/contact';
 import { MessageCircle } from 'lucide-react';
 
 export function Hero() {
@@ -62,6 +63,18 @@ export function Hero() {
           {/* Trust indicator */}
           <p className="mt-8 text-sm text-muted">
             Respuesta personalizada en menos de 24 horas
+          </p>
+
+          {/* Email secundario */}
+          <p className="mt-3 text-sm text-muted">
+            También disponible por email:{' '}
+            <a
+              href={`mailto:${CONTACT.email}`}
+              className="underline underline-offset-4 hover:text-text"
+              aria-label="Enviar email a Daniela Stecco"
+            >
+              {CONTACT.email}
+            </a>
           </p>
         </div>
       </div>

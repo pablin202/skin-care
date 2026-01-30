@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import { SITE_CONFIG, NAV_LINKS } from '@/lib/constants';
 import { getWhatsAppUrl } from '@/lib/utils';
-import { MessageCircle } from 'lucide-react';
+import { CONTACT } from '@/config/contact';
+import { MessageCircle, Mail } from 'lucide-react';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -41,16 +42,29 @@ export function Footer() {
           {/* Contact */}
           <div>
             <h3 className="font-medium text-text">Contacto</h3>
-            <ul className="mt-3 space-y-2">
+            <ul className="mt-3 space-y-3">
+              {/* WhatsApp - Principal */}
               <li>
                 <a
                   href={getWhatsAppUrl('contacto')}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-accent"
+                  className="inline-flex items-center gap-2 rounded-lg bg-accent/10 px-3 py-2 text-sm font-medium text-accent transition-colors hover:bg-accent/20"
+                  aria-label="Contactar por WhatsApp"
                 >
                   <MessageCircle className="h-4 w-4" />
                   WhatsApp
+                </a>
+              </li>
+              {/* Email - Secundario */}
+              <li>
+                <a
+                  href={`mailto:${CONTACT.email}`}
+                  className="inline-flex items-center gap-2 text-sm text-muted underline underline-offset-4 transition-colors hover:text-text"
+                  aria-label="Enviar email a Daniela Stecco"
+                >
+                  <Mail className="h-4 w-4" />
+                  {CONTACT.email}
                 </a>
               </li>
               <li>

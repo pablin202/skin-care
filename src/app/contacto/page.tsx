@@ -3,12 +3,13 @@ import Link from 'next/link';
 import { Card, CardContent, Button } from '@/components/ui';
 import { WhatsAppCTA } from '@/components/WhatsAppCTA';
 import { SITE_CONFIG } from '@/lib/constants';
-import { MessageCircle, ClipboardList, User } from 'lucide-react';
+import { CONTACT, getMailtoUrl } from '@/config/contact';
+import { MessageCircle, ClipboardList, User, Mail } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Contacto',
   description:
-    'Contactá a Daniela Stecco para asesoramiento en cuidado de la piel. WhatsApp y diagnóstico online disponibles.',
+    'Contactá a Daniela Stecco para asesoramiento en cuidado de la piel. WhatsApp, email y diagnóstico online disponibles.',
 };
 
 export default function ContactoPage() {
@@ -80,6 +81,30 @@ export default function ContactoPage() {
                   </p>
                 </CardContent>
               </Card>
+            </div>
+
+            {/* Email - Secondary option */}
+            <div className="mt-6 rounded-2xl border border-border bg-bg p-6 text-center">
+              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-muted/10">
+                <Mail className="h-5 w-5 text-muted" />
+              </div>
+              <h3 className="mt-4 font-serif text-lg font-medium text-text">
+                También podés escribirme por email
+              </h3>
+              <p className="mt-2 text-[15px] text-muted">
+                Si preferís, podés enviarme un correo y te respondo a la brevedad.
+              </p>
+              <div className="mt-5">
+                <a
+                  href={getMailtoUrl()}
+                  className="inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-border bg-surface px-6 text-base font-medium text-text transition-colors hover:border-neutral-400 hover:bg-bg focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/30 focus-visible:ring-offset-2"
+                  aria-label="Enviar email a Daniela Stecco"
+                >
+                  <Mail className="h-4 w-4" />
+                  Escribir por email
+                </a>
+              </div>
+              <p className="mt-3 text-sm text-muted">{CONTACT.email}</p>
             </div>
           </div>
         </div>
@@ -174,6 +199,16 @@ export default function ContactoPage() {
                 Escribirme ahora
               </WhatsAppCTA>
             </div>
+            <p className="mt-4 text-sm text-muted">
+              También disponible por email:{' '}
+              <a
+                href={`mailto:${CONTACT.email}`}
+                className="underline underline-offset-4 hover:text-text"
+                aria-label="Enviar email a Daniela Stecco"
+              >
+                {CONTACT.email}
+              </a>
+            </p>
           </div>
         </div>
       </section>
