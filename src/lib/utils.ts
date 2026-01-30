@@ -75,11 +75,11 @@ export function checkRateLimit(
  */
 export function cleanRateLimitStore(): void {
   const now = Date.now();
-  for (const [key, value] of rateLimitStore.entries()) {
+  rateLimitStore.forEach((value, key) => {
     if (now > value.resetTime) {
       rateLimitStore.delete(key);
     }
-  }
+  });
 }
 
 /**
