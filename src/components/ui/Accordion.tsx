@@ -1,7 +1,8 @@
 'use client';
 
 import { cn } from '@/lib/utils';
-import { useState, type ReactNode } from 'react';
+import { useState } from 'react';
+import { ChevronDown } from 'lucide-react';
 
 interface AccordionItem {
   id: string;
@@ -30,7 +31,7 @@ export function Accordion({ items, className }: AccordionProps) {
   };
 
   return (
-    <div className={cn('divide-y divide-neutral-200 rounded-2xl bg-white shadow-sm', className)}>
+    <div className={cn('divide-y divide-border rounded-2xl border border-border bg-surface', className)}>
       {items.map((item) => (
         <AccordionItemComponent
           key={item.id}
@@ -54,11 +55,16 @@ function AccordionItemComponent({ item, isOpen, onToggle }: AccordionItemCompone
     <div className="first:rounded-t-2xl last:rounded-b-2xl">
       <button
         onClick={onToggle}
-        className="flex w-full items-center justify-between px-6 py-4 text-left transition-colors hover:bg-neutral-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary-500"
+        className="flex w-full items-center justify-between px-5 py-4 text-left transition-colors hover:bg-bg focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-accent/30"
         aria-expanded={isOpen}
       >
-        <span className="pr-4 font-medium text-neutral-900">{item.question}</span>
-        <ChevronIcon isOpen={isOpen} />
+        <span className="pr-4 font-serif font-medium text-text">{item.question}</span>
+        <ChevronDown
+          className={cn(
+            'h-5 w-5 flex-shrink-0 text-muted transition-transform duration-200',
+            isOpen && 'rotate-180'
+          )}
+        />
       </button>
       <div
         className={cn(
@@ -66,25 +72,9 @@ function AccordionItemComponent({ item, isOpen, onToggle }: AccordionItemCompone
           isOpen ? 'max-h-96' : 'max-h-0'
         )}
       >
-        <div className="px-6 pb-4 text-neutral-600">{item.answer}</div>
+        <div className="px-5 pb-4 text-[15px] text-muted">{item.answer}</div>
       </div>
     </div>
-  );
-}
-
-function ChevronIcon({ isOpen }: { isOpen: boolean }) {
-  return (
-    <svg
-      className={cn('h-5 w-5 flex-shrink-0 text-neutral-500 transition-transform duration-200', {
-        'rotate-180': isOpen,
-      })}
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-      aria-hidden="true"
-    >
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-    </svg>
   );
 }
 

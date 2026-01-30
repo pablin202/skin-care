@@ -3,6 +3,7 @@
 import { Button } from '@/components/ui';
 import { getWhatsAppUrl, getPortalUrl } from '@/lib/utils';
 import { WHATSAPP_MESSAGES } from '@/lib/constants';
+import { MessageCircle } from 'lucide-react';
 
 interface WhatsAppCTAProps {
   messageKey?: keyof typeof WHATSAPP_MESSAGES;
@@ -11,15 +12,17 @@ interface WhatsAppCTAProps {
   variant?: 'whatsapp' | 'primary' | 'secondary';
   size?: 'sm' | 'md' | 'lg';
   className?: string;
+  showIcon?: boolean;
 }
 
 export function WhatsAppCTA({
   messageKey = 'general',
   customMessage,
   children,
-  variant = 'whatsapp',
+  variant = 'primary',
   size = 'md',
   className,
+  showIcon = true,
 }: WhatsAppCTAProps) {
   const handleClick = () => {
     const url = customMessage
@@ -29,7 +32,13 @@ export function WhatsAppCTA({
   };
 
   return (
-    <Button variant={variant} size={size} onClick={handleClick} className={className}>
+    <Button
+      variant={variant}
+      size={size}
+      onClick={handleClick}
+      className={className}
+      leftIcon={showIcon ? <MessageCircle className="h-4 w-4" /> : undefined}
+    >
       {children}
     </Button>
   );

@@ -10,8 +10,8 @@ export function Card({ children, className, hover = true, ...props }: CardProps)
   return (
     <div
       className={cn(
-        'rounded-2xl bg-white p-6 shadow-sm',
-        hover && 'transition-shadow duration-200 hover:shadow-md',
+        'rounded-2xl border border-border bg-surface p-6',
+        hover && 'transition-all duration-200 hover:border-neutral-300 hover:shadow-soft',
         className
       )}
       {...props}
@@ -40,7 +40,7 @@ interface CardTitleProps extends HTMLAttributes<HTMLHeadingElement> {
 
 export function CardTitle({ children, className, as: Tag = 'h3', ...props }: CardTitleProps) {
   return (
-    <Tag className={cn('text-xl font-semibold text-neutral-900', className)} {...props}>
+    <Tag className={cn('font-serif text-lg font-medium text-text', className)} {...props}>
       {children}
     </Tag>
   );
@@ -52,7 +52,7 @@ interface CardDescriptionProps extends HTMLAttributes<HTMLParagraphElement> {
 
 export function CardDescription({ children, className, ...props }: CardDescriptionProps) {
   return (
-    <p className={cn('text-neutral-600', className)} {...props}>
+    <p className={cn('text-[15px] text-muted', className)} {...props}>
       {children}
     </p>
   );

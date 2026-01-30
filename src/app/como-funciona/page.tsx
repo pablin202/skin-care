@@ -14,13 +14,13 @@ export default function ComoFuncionaPage() {
   return (
     <>
       {/* Hero */}
-      <section className="gradient-bg py-16 md:py-20">
+      <section className="bg-bg py-14 md:py-20">
         <div className="container-custom">
           <div className="mx-auto max-w-3xl text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-neutral-900 md:text-5xl">
+            <h1 className="font-serif text-3xl font-medium tracking-tight text-text md:text-4xl">
               Cómo funciona
             </h1>
-            <p className="mt-4 text-lg text-neutral-600">
+            <p className="mt-4 text-[17px] leading-7 text-muted">
               Un proceso simple y personalizado para encontrar la rutina ideal para tu piel.
             </p>
           </div>
@@ -28,30 +28,30 @@ export default function ComoFuncionaPage() {
       </section>
 
       {/* Steps detailed */}
-      <section className="section bg-white">
+      <section className="section bg-surface">
         <div className="container-custom">
-          <div className="mx-auto max-w-4xl">
+          <div className="mx-auto max-w-3xl">
             {HOW_IT_WORKS_STEPS.map((step, index) => (
               <div
                 key={index}
-                className="relative mb-12 last:mb-0 md:mb-16 md:grid md:grid-cols-12 md:gap-8"
+                className="relative mb-10 last:mb-0 md:mb-12 md:grid md:grid-cols-12 md:gap-6"
               >
                 {/* Number */}
                 <div className="mb-4 flex md:col-span-2 md:mb-0 md:justify-end">
-                  <div className="flex h-14 w-14 items-center justify-center rounded-full bg-primary-600 text-2xl font-bold text-white md:h-16 md:w-16">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-accent text-lg font-semibold text-white">
                     {step.number}
                   </div>
                 </div>
 
                 {/* Content */}
                 <div className="md:col-span-10">
-                  <h2 className="text-2xl font-semibold text-neutral-900">{step.title}</h2>
-                  <p className="mt-3 text-lg text-neutral-600">{step.description}</p>
+                  <h2 className="font-serif text-xl font-medium text-text">{step.title}</h2>
+                  <p className="mt-2 text-[15px] leading-relaxed text-muted">{step.description}</p>
 
                   {/* Additional details per step */}
                   {step.number === 1 && (
-                    <div className="mt-4 rounded-lg bg-neutral-50 p-4">
-                      <p className="text-neutral-600">
+                    <div className="mt-4 rounded-xl border border-border bg-bg p-4">
+                      <p className="text-[15px] text-muted">
                         Podés hacerlo de dos formas: completar el{' '}
                         <Link href="/diagnostico" className="link">
                           formulario online
@@ -63,8 +63,8 @@ export default function ComoFuncionaPage() {
                   )}
 
                   {step.number === 2 && (
-                    <div className="mt-4 rounded-lg bg-neutral-50 p-4">
-                      <p className="text-neutral-600">
+                    <div className="mt-4 rounded-xl border border-border bg-bg p-4">
+                      <p className="text-[15px] text-muted">
                         Analizo tu información y armo una rutina de mañana y noche adaptada a tu
                         tipo de piel, sensibilidad, objetivos y presupuesto.
                       </p>
@@ -72,8 +72,8 @@ export default function ComoFuncionaPage() {
                   )}
 
                   {step.number === 3 && (
-                    <div className="mt-4 rounded-lg bg-neutral-50 p-4">
-                      <p className="text-neutral-600">
+                    <div className="mt-4 rounded-xl border border-border bg-bg p-4">
+                      <p className="text-[15px] text-muted">
                         Te envío el link directo al portal autorizado donde podés ver los productos
                         y completar tu compra de forma segura con todos los medios de pago.
                       </p>
@@ -81,8 +81,8 @@ export default function ComoFuncionaPage() {
                   )}
 
                   {step.number === 4 && (
-                    <div className="mt-4 rounded-lg bg-neutral-50 p-4">
-                      <p className="text-neutral-600">
+                    <div className="mt-4 rounded-xl border border-border bg-bg p-4">
+                      <p className="text-[15px] text-muted">
                         Estoy disponible para resolver tus dudas, ajustar la rutina si algo no te
                         funciona como esperabas, y acompañarte en todo el proceso.
                       </p>
@@ -92,7 +92,7 @@ export default function ComoFuncionaPage() {
 
                 {/* Connecting line */}
                 {index < HOW_IT_WORKS_STEPS.length - 1 && (
-                  <div className="absolute left-7 top-16 hidden h-full w-0.5 -translate-x-1/2 bg-primary-200 md:left-[calc(16.666%-2rem)] md:block" />
+                  <div className="absolute left-6 top-14 hidden h-full w-px bg-border md:left-[calc(16.666%-1.5rem)] md:block" />
                 )}
               </div>
             ))}
@@ -101,38 +101,38 @@ export default function ComoFuncionaPage() {
       </section>
 
       {/* Why this process */}
-      <section className="section bg-neutral-50">
+      <section className="section bg-bg">
         <div className="container-custom">
           <div className="mx-auto max-w-3xl">
-            <h2 className="text-center text-3xl font-bold text-neutral-900">
+            <h2 className="text-center font-serif text-2xl font-medium text-text md:text-3xl">
               ¿Por qué este proceso?
             </h2>
-            <div className="mt-8 space-y-6">
-              <div className="rounded-2xl bg-white p-6 shadow-sm">
-                <h3 className="text-lg font-semibold text-neutral-900">
+            <div className="mt-8 space-y-4">
+              <div className="rounded-2xl border border-border bg-surface p-6">
+                <h3 className="font-serif text-lg font-medium text-text">
                   Porque cada piel es diferente
                 </h3>
-                <p className="mt-2 text-neutral-600">
+                <p className="mt-2 text-[15px] text-muted">
                   No existe una rutina universal que funcione para todas. Lo que le sirve a una
                   persona puede no ser adecuado para otra. Por eso empezamos conociendo tu piel.
                 </p>
               </div>
 
-              <div className="rounded-2xl bg-white p-6 shadow-sm">
-                <h3 className="text-lg font-semibold text-neutral-900">
+              <div className="rounded-2xl border border-border bg-surface p-6">
+                <h3 className="font-serif text-lg font-medium text-text">
                   Porque los cambios llevan tiempo
                 </h3>
-                <p className="mt-2 text-neutral-600">
+                <p className="mt-2 text-[15px] text-muted">
                   La piel necesita tiempo para responder a los productos. Por eso el seguimiento es
                   parte del proceso: ajustamos si hace falta.
                 </p>
               </div>
 
-              <div className="rounded-2xl bg-white p-6 shadow-sm">
-                <h3 className="text-lg font-semibold text-neutral-900">
+              <div className="rounded-2xl border border-border bg-surface p-6">
+                <h3 className="font-serif text-lg font-medium text-text">
                   Porque tener apoyo hace la diferencia
                 </h3>
-                <p className="mt-2 text-neutral-600">
+                <p className="mt-2 text-[15px] text-muted">
                   Muchas veces compramos productos y no sabemos bien cómo usarlos, o abandonamos
                   porque no vemos resultados inmediatos. Con acompañamiento, es más fácil mantener
                   la constancia.
@@ -144,20 +144,20 @@ export default function ComoFuncionaPage() {
       </section>
 
       {/* CTA */}
-      <section className="section bg-primary-50">
+      <section className="section bg-accent/5">
         <div className="container-custom">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold text-neutral-900">¿Empezamos?</h2>
-            <p className="mt-4 text-lg text-neutral-600">
+            <h2 className="font-serif text-2xl font-medium text-text md:text-3xl">¿Empezamos?</h2>
+            <p className="mt-4 text-[17px] text-muted">
               El primer paso es contarme sobre tu piel. Podés hacerlo online o por WhatsApp.
             </p>
-            <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Link href="/diagnostico">
                 <Button variant="primary" size="lg">
                   Completar diagnóstico online
                 </Button>
               </Link>
-              <WhatsAppCTA messageKey="home" size="lg">
+              <WhatsAppCTA messageKey="home" size="lg" variant="secondary">
                 Escribime por WhatsApp
               </WhatsAppCTA>
             </div>

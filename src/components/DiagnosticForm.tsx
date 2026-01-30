@@ -7,6 +7,7 @@ import { Button, Alert } from '@/components/ui';
 import { diagnosticFormSchema, type DiagnosticFormData } from '@/types';
 import { FORM_OPTIONS } from '@/lib/constants';
 import { getWhatsAppUrl } from '@/lib/utils';
+import { MessageCircle } from 'lucide-react';
 
 type FormStatus = 'idle' | 'loading' | 'success' | 'error';
 
@@ -63,22 +64,23 @@ export function DiagnosticForm() {
 
   if (status === 'success') {
     return (
-      <div className="rounded-2xl bg-white p-6 shadow-sm md:p-8">
+      <div className="rounded-2xl border border-border bg-surface p-6 md:p-8">
         <Alert variant="success">
           <strong>Gracias por completar el diagnóstico.</strong>
         </Alert>
         <div className="mt-6 text-center">
-          <p className="text-lg text-neutral-700">
+          <p className="text-[17px] text-text">
             Recibí tu información y te respondo a la brevedad con tu rutina personalizada.
           </p>
-          <p className="mt-2 text-neutral-600">
+          <p className="mt-2 text-muted">
             Si querés acelerar el proceso, podés escribirme directamente:
           </p>
           <div className="mt-6">
             <Button
-              variant="whatsapp"
+              variant="primary"
               size="lg"
               onClick={() => window.open(getWhatsAppUrl('diagnostico'), '_blank')}
+              leftIcon={<MessageCircle className="h-4 w-4" />}
             >
               Escribirme por WhatsApp
             </Button>
@@ -91,7 +93,7 @@ export function DiagnosticForm() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="rounded-2xl bg-white p-6 shadow-sm md:p-8"
+      className="rounded-2xl border border-border bg-surface p-6 md:p-8"
       noValidate
     >
       {status === 'error' && (
@@ -100,12 +102,12 @@ export function DiagnosticForm() {
         </Alert>
       )}
 
-      <div className="space-y-6">
+      <div className="space-y-5">
         {/* Nombre y Apellido */}
         <div className="grid gap-4 sm:grid-cols-2">
           <div>
             <label htmlFor="nombre" className="form-label">
-              Nombre <span className="text-red-500">*</span>
+              Nombre <span className="text-red-600">*</span>
             </label>
             <input
               id="nombre"
@@ -125,7 +127,7 @@ export function DiagnosticForm() {
 
           <div>
             <label htmlFor="apellido" className="form-label">
-              Apellido <span className="text-red-500">*</span>
+              Apellido <span className="text-red-600">*</span>
             </label>
             <input
               id="apellido"
@@ -148,7 +150,7 @@ export function DiagnosticForm() {
         <div className="grid gap-4 sm:grid-cols-2">
           <div>
             <label htmlFor="whatsapp" className="form-label">
-              WhatsApp <span className="text-red-500">*</span>
+              WhatsApp <span className="text-red-600">*</span>
             </label>
             <input
               id="whatsapp"
@@ -168,7 +170,7 @@ export function DiagnosticForm() {
 
           <div>
             <label htmlFor="ciudadProvincia" className="form-label">
-              Ciudad / Provincia <span className="text-red-500">*</span>
+              Ciudad / Provincia <span className="text-red-600">*</span>
             </label>
             <input
               id="ciudadProvincia"
@@ -191,7 +193,7 @@ export function DiagnosticForm() {
         <div className="grid gap-4 sm:grid-cols-2">
           <div>
             <label htmlFor="edad" className="form-label">
-              Rango de edad <span className="text-red-500">*</span>
+              Rango de edad <span className="text-red-600">*</span>
             </label>
             <select
               id="edad"
@@ -216,7 +218,7 @@ export function DiagnosticForm() {
 
           <div>
             <label htmlFor="tipoPiel" className="form-label">
-              Tipo de piel <span className="text-red-500">*</span>
+              Tipo de piel <span className="text-red-600">*</span>
             </label>
             <select
               id="tipoPiel"
@@ -244,7 +246,7 @@ export function DiagnosticForm() {
         <div className="grid gap-4 sm:grid-cols-2">
           <div>
             <label htmlFor="sensibilidad" className="form-label">
-              ¿Tu piel es sensible? <span className="text-red-500">*</span>
+              ¿Tu piel es sensible? <span className="text-red-600">*</span>
             </label>
             <select
               id="sensibilidad"
@@ -269,7 +271,7 @@ export function DiagnosticForm() {
 
           <div>
             <label htmlFor="objetivo" className="form-label">
-              Objetivo principal <span className="text-red-500">*</span>
+              Objetivo principal <span className="text-red-600">*</span>
             </label>
             <select
               id="objetivo"
@@ -349,18 +351,18 @@ export function DiagnosticForm() {
         </div>
 
         {/* Consentimiento */}
-        <div className="rounded-lg bg-neutral-50 p-4">
+        <div className="rounded-xl border border-border bg-bg p-4">
           <label className="flex cursor-pointer items-start gap-3">
             <input
               type="checkbox"
-              className="mt-1 h-4 w-4 rounded border-neutral-300 text-primary-600 focus:ring-primary-500"
+              className="mt-1 h-4 w-4 rounded border-border text-accent focus:ring-accent/30"
               {...register('consentimiento')}
               aria-describedby={errors.consentimiento ? 'consentimiento-error' : undefined}
             />
-            <span className="text-sm text-neutral-700">
-              Entiendo que esta asesoría es orientativa y <strong>no reemplaza</strong> la consulta
+            <span className="text-sm text-muted">
+              Entiendo que esta asesoría es orientativa y <strong className="text-text">no reemplaza</strong> la consulta
               con un dermatólogo u otro profesional de la salud.{' '}
-              <span className="text-red-500">*</span>
+              <span className="text-red-600">*</span>
             </span>
           </label>
           {errors.consentimiento && (
@@ -371,7 +373,7 @@ export function DiagnosticForm() {
         </div>
 
         {/* Submit */}
-        <div className="pt-4">
+        <div className="pt-2">
           <Button
             type="submit"
             variant="primary"
@@ -383,8 +385,8 @@ export function DiagnosticForm() {
           </Button>
         </div>
 
-        <p className="text-center text-sm text-neutral-500">
-          Los campos marcados con <span className="text-red-500">*</span> son obligatorios.
+        <p className="text-center text-sm text-muted">
+          Los campos marcados con <span className="text-red-600">*</span> son obligatorios.
         </p>
       </div>
     </form>

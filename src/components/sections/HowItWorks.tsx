@@ -8,7 +8,7 @@ interface HowItWorksProps {
 
 export function HowItWorks({ showCTA = true }: HowItWorksProps) {
   return (
-    <section className="section bg-neutral-50">
+    <section className="section bg-bg">
       <div className="container-custom">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="section-title">Cómo funciona</h2>
@@ -17,16 +17,16 @@ export function HowItWorks({ showCTA = true }: HowItWorksProps) {
           </p>
         </div>
 
-        <div className="mx-auto mt-12 max-w-4xl">
-          <div className="grid gap-8 md:grid-cols-2">
+        <div className="mx-auto mt-10 max-w-3xl">
+          <div className="grid gap-6 md:grid-cols-2">
             {HOW_IT_WORKS_STEPS.map((step, index) => (
               <div key={index} className="flex gap-4">
-                <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-primary-600 text-xl font-bold text-white">
+                <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-accent text-base font-semibold text-white">
                   {step.number}
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-neutral-900">{step.title}</h3>
-                  <p className="mt-1 text-neutral-600">{step.description}</p>
+                  <h3 className="font-serif text-lg font-medium text-text">{step.title}</h3>
+                  <p className="mt-1 text-[15px] text-muted">{step.description}</p>
                 </div>
               </div>
             ))}
@@ -34,7 +34,7 @@ export function HowItWorks({ showCTA = true }: HowItWorksProps) {
         </div>
 
         {showCTA && (
-          <div className="mt-12 text-center">
+          <div className="mt-10 text-center">
             <Link href="/como-funciona">
               <Button variant="secondary">Ver más detalles</Button>
             </Link>

@@ -6,7 +6,7 @@ export const SITE_CONFIG = {
   description:
     'Asesoría personalizada en cuidado de la piel. Rutinas adaptadas a tus necesidades con productos de marca internacional y seguimiento continuo.',
   author: 'Daniela Stecco',
-  location: 'Argentina', // Configurable
+  location: 'Argentina',
 };
 
 // Variables de entorno con fallbacks
@@ -43,7 +43,7 @@ export const NAV_LINKS = [
   { href: '/contacto', label: 'Contacto' },
 ];
 
-// Problemas de piel (para las rutinas)
+// Problemas de piel (para las rutinas) - iconos se renderizan en el componente
 export const SKIN_PROBLEMS = [
   {
     slug: 'manchas',
@@ -51,7 +51,7 @@ export const SKIN_PROBLEMS = [
     shortTitle: 'Manchas',
     description:
       'Diferencias de pigmentación, marcas oscuras o claras, y falta de uniformidad en el tono de la piel.',
-    icon: '🎨',
+    iconName: 'Palette' as const,
   },
   {
     slug: 'sequedad',
@@ -59,43 +59,43 @@ export const SKIN_PROBLEMS = [
     shortTitle: 'Sequedad',
     description:
       'Sensación de tirantez, descamación, pérdida de luminosidad y líneas por deshidratación.',
-    icon: '💧',
+    iconName: 'Droplets' as const,
   },
   {
     slug: 'textura',
     title: 'Líneas finas y textura irregular',
     shortTitle: 'Textura',
     description: 'Arrugas superficiales, poros visibles, rugosidades y pérdida de suavidad.',
-    icon: '✨',
+    iconName: 'Sparkles' as const,
   },
   {
     slug: 'sensible',
     title: 'Piel sensible o reactiva',
     shortTitle: 'Sensibilidad',
     description: 'Rojeces, irritación frecuente, reacciones a productos y sensación de incomodidad.',
-    icon: '🌸',
+    iconName: 'Heart' as const,
   },
 ];
 
-// Beneficios principales
+// Beneficios principales - iconos se renderizan en el componente
 export const BENEFITS = [
   {
     title: 'Asesoría personalizada',
     description:
       'Analizo tu piel y necesidades para recomendarte una rutina adaptada a tu caso particular.',
-    icon: '👤',
+    iconName: 'User' as const,
   },
   {
     title: 'Seguimiento continuo',
     description:
       'Te acompaño en el proceso, ajustando la rutina según cómo responda tu piel con el tiempo.',
-    icon: '📱',
+    iconName: 'MessageCircle' as const,
   },
   {
     title: 'Productos de calidad',
     description:
       'Trabajo con productos de marca internacional reconocida, disponibles en portal autorizado.',
-    icon: '⭐',
+    iconName: 'Shield' as const,
   },
 ];
 

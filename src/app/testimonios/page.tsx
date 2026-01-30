@@ -4,6 +4,7 @@ import { Card, CardContent, Button } from '@/components/ui';
 import { WhatsAppCTA } from '@/components/WhatsAppCTA';
 import { testimonials, hasRealTestimonials } from '@/data/testimonials';
 import { getWhatsAppUrl } from '@/lib/utils';
+import { Star } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Testimonios',
@@ -17,13 +18,13 @@ export default function TestimoniosPage() {
   return (
     <>
       {/* Hero */}
-      <section className="gradient-bg py-16 md:py-20">
+      <section className="bg-bg py-14 md:py-20">
         <div className="container-custom">
           <div className="mx-auto max-w-3xl text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-neutral-900 md:text-5xl">
+            <h1 className="font-serif text-3xl font-medium tracking-tight text-text md:text-4xl">
               Testimonios
             </h1>
-            <p className="mt-4 text-lg text-neutral-600">
+            <p className="mt-4 text-[17px] leading-7 text-muted">
               {hasReal
                 ? 'Experiencias de clientas que han trabajado conmigo.'
                 : 'Próximamente compartiremos experiencias de clientas que trabajan conmigo.'}
@@ -33,19 +34,19 @@ export default function TestimoniosPage() {
       </section>
 
       {/* Testimonials */}
-      <section className="section bg-white">
+      <section className="section bg-surface">
         <div className="container-custom">
           <div className="mx-auto max-w-4xl">
             {!hasReal && (
-              <div className="mb-8 rounded-lg bg-yellow-50 p-4 text-center">
-                <p className="text-yellow-800">
+              <div className="mb-8 rounded-xl border border-amber-200 bg-amber-50 p-4 text-center">
+                <p className="text-sm text-amber-800">
                   Estamos recopilando testimonios de clientas. Si ya trabajaste conmigo y querés
                   compartir tu experiencia,{' '}
                   <a
                     href={getWhatsAppUrl('contacto')}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="font-medium underline hover:text-yellow-900"
+                    className="font-medium underline hover:text-amber-900"
                   >
                     escribime por WhatsApp
                   </a>
@@ -54,38 +55,42 @@ export default function TestimoniosPage() {
               </div>
             )}
 
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
               {testimonials.map((testimonial) => (
                 <Card
                   key={testimonial.id}
-                  className={testimonial.isPlaceholder ? 'border-dashed bg-neutral-50' : ''}
+                  className={testimonial.isPlaceholder ? 'border-dashed bg-bg' : ''}
+                  hover={!testimonial.isPlaceholder}
                 >
                   <CardContent>
-                    <div className="flex items-start gap-1 text-yellow-400">
+                    <div className="flex items-start gap-0.5">
                       {[...Array(5)].map((_, i) => (
-                        <StarIcon key={i} filled={!testimonial.isPlaceholder} />
+                        <Star
+                          key={i}
+                          className={`h-4 w-4 ${testimonial.isPlaceholder ? 'text-neutral-300' : 'fill-accent text-accent'}`}
+                        />
                       ))}
                     </div>
                     <blockquote className="mt-4">
                       <p
-                        className={`text-neutral-700 ${testimonial.isPlaceholder ? 'italic' : ''}`}
+                        className={`text-[15px] leading-relaxed ${testimonial.isPlaceholder ? 'italic text-muted' : 'text-text'}`}
                       >
                         &ldquo;{testimonial.quote}&rdquo;
                       </p>
                     </blockquote>
-                    <div className="mt-4 border-t border-neutral-100 pt-4">
+                    <div className="mt-4 border-t border-border pt-4">
                       <p
-                        className={`font-medium ${testimonial.isPlaceholder ? 'text-neutral-400' : 'text-neutral-900'}`}
+                        className={`font-medium ${testimonial.isPlaceholder ? 'text-muted' : 'text-text'}`}
                       >
                         {testimonial.name}
                       </p>
                       {testimonial.age && testimonial.location && (
-                        <p className="text-sm text-neutral-500">
+                        <p className="text-sm text-muted">
                           {testimonial.age} - {testimonial.location}
                         </p>
                       )}
                       {testimonial.problem && (
-                        <p className="mt-1 text-sm text-primary-600">{testimonial.problem}</p>
+                        <p className="mt-1 text-sm text-accent">{testimonial.problem}</p>
                       )}
                     </div>
                   </CardContent>
@@ -97,12 +102,12 @@ export default function TestimoniosPage() {
       </section>
 
       {/* Note about results */}
-      <section className="section bg-neutral-50">
+      <section className="section bg-bg">
         <div className="container-custom">
           <div className="mx-auto max-w-3xl">
-            <div className="rounded-2xl bg-white p-6 shadow-sm md:p-8">
-              <h2 className="text-xl font-semibold text-neutral-900">Sobre los resultados</h2>
-              <div className="mt-4 space-y-3 text-neutral-600">
+            <div className="rounded-2xl border border-border bg-surface p-6 md:p-8">
+              <h2 className="font-serif text-xl font-medium text-text">Sobre los resultados</h2>
+              <div className="mt-4 space-y-3 text-[15px] text-muted">
                 <p>
                   Cada piel es única y responde de manera diferente a los productos y rutinas. Los
                   testimonios reflejan experiencias individuales y no garantizan resultados
@@ -124,21 +129,21 @@ export default function TestimoniosPage() {
       </section>
 
       {/* CTA */}
-      <section className="section bg-primary-50">
+      <section className="section bg-accent/5">
         <div className="container-custom">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold text-neutral-900">¿Querés empezar tu proceso?</h2>
-            <p className="mt-4 text-lg text-neutral-600">
+            <h2 className="font-serif text-2xl font-medium text-text md:text-3xl">¿Querés empezar tu proceso?</h2>
+            <p className="mt-4 text-[17px] text-muted">
               Cada historia empieza con el primer paso. Contactame para conocer tu piel y armar tu
               rutina.
             </p>
-            <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Link href="/diagnostico">
                 <Button variant="primary" size="lg">
                   Completar diagnóstico
                 </Button>
               </Link>
-              <WhatsAppCTA messageKey="home" size="lg">
+              <WhatsAppCTA messageKey="home" size="lg" variant="secondary">
                 Escribirme por WhatsApp
               </WhatsAppCTA>
             </div>
@@ -146,17 +151,5 @@ export default function TestimoniosPage() {
         </div>
       </section>
     </>
-  );
-}
-
-function StarIcon({ filled }: { filled: boolean }) {
-  return (
-    <svg
-      className={`h-5 w-5 ${filled ? 'fill-current' : 'fill-neutral-300'}`}
-      viewBox="0 0 20 20"
-      aria-hidden="true"
-    >
-      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-    </svg>
   );
 }

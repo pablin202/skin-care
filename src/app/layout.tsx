@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Inter, Cormorant_Garamond } from 'next/font/google';
+import { Inter, Fraunces } from 'next/font/google';
 import { Navbar, Footer, WhatsAppButton } from '@/components/layout';
 import { SITE_CONFIG, ENV } from '@/lib/constants';
 import './globals.css';
@@ -10,17 +10,17 @@ const inter = Inter({
   variable: '--font-inter',
 });
 
-const cormorant = Cormorant_Garamond({
+const fraunces = Fraunces({
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-cormorant',
+  variable: '--font-fraunces',
   weight: ['300', '400', '500', '600', '700'],
 });
 
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: '#d08c6a',
+  themeColor: '#2F6F68',
 };
 
 export const metadata: Metadata = {
@@ -75,8 +75,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={`${inter.variable} ${cormorant.variable}`}>
-      <body className="flex min-h-screen flex-col font-sans">
+    <html lang="es" className={`${inter.variable} ${fraunces.variable}`}>
+      <body className="flex min-h-screen flex-col bg-bg font-sans text-text antialiased">
         <Navbar />
         <main className="flex-grow">{children}</main>
         <Footer />
